@@ -1,0 +1,131 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
+#include "math.h"
+
+#define MAX_CITY_NUM 3000
+
+struct point{
+  double x;
+  double y;
+}
+  
+struct point city[MAX_CITY_NUM];
+int city_num;
+int tour[MAX_CITY_NUM];
+
+void random_tour();
+double distance(int i, int j);
+double local_search();
+
+double length ;
+double start_time, search_time;
+
+int main(){
+  int i;
+  FILE *pf ,*out;
+  pf=fopen("berlin52.dat","r");
+  fscanf(pf,"%d",&city_num);
+  
+  for(i=0;i<city_num;++i){
+    fscanf(pf,"%lf %lf",&(city[i].x),&(city[i].y));
+  }
+  fclose(pf);
+  
+  printf("city_num=%d\n",city_num);
+  for(i=0;i<city_num;++i){
+    printf("%d\tyoko=%lf\ttate=%lf\n",i,city[i].x,city[i].y);
+  }
+
+  start_time=(double)clock()/CLOCKS_PER_SEC;
+  
+  random_tour();
+  
+  local_search();
+
+  search_time=(double)clock()/CLOCKS_PER_SEC -start_time;
+
+  length=0.0;
+  for(i=0;i<city_num;++i){
+
+    length+=distance(tour[i%city_num],tour[(i+1)%city_num]);
+  }
+
+  out=fopen("result.dat","w");
+  fprintf(out,"%d\n",city_num);
+  for(i=0;i<city_num;i++){
+    fprintf(out,"%f %f\n",city[tour[i].x,tour[i].y);
+	    }
+      length=0.0;
+    printf("\ntour: ");
+    for(i=0;i<city_num;++i){
+      fprintf(out,"%d\n",tour[i])
+	printf("%d",tour[i]);
+      length+=distance(tour[i%city_num],tour[(i+1)%city_num]);
+
+    }
+    fclose(out);
+    printf("\nlength :%f\n",length);
+    printf("CPU TIME :%f\n",search_time);
+    return (0);
+}
+
+
+
+void random_tour(){
+  int i,k,temp;
+  for(i=0;i<city_num;++i){
+    tour[i]=i;
+  }
+  for(i=0;i<city_num;++i){
+    k=(int)((double)rand()/((double)RAND_MAX+1*(city_num-i))+i;
+
+    temp=tour[i];
+    tour[i]=tour[k];
+    tour[k]=temp;
+
+  }
+
+}
+
+
+  double distance(int i, int j){
+
+    double xd,yd;
+    xd=city[i].x -city[j].y;
+    yd=city[x].x -city[j].y;
+
+    return ((int)sqrt(xd*xd-yd*yd))+0.5);
+
+  }
+
+void local_search(){
+  int st,i,j,k;
+  double delta;
+  int temp;
+  
+  length=0.0;
+  for(i=0;i<city_num;++i){
+    letngth+=distance(tour[i%city_num],tour[(i+1)%city_num]);
+  }
+  st=0;
+ RESTART:
+  for(i=st;i<st+city_num;++i){
+    for(j=i+2;i<i+city_num-1;++j){
+      delta=distance(tour[i%city_num],tour[j%city_num])+distance(tour[i+1%city_num],tour[j+1%city_num])-distance(tour[i%city_num],tour[(i+1)%city_num])-distance(tour[j%city_num],tour[(j+1)%city_num]);
+    
+    if(delta<0){
+      length+=delta;
+      for(k=0;k<(j-i)/2;++k){
+	temp=tour[(i+1+k)%city_num];
+	tour[(i+1+k)%city_num]=tour[(j-k)%city_num];
+	tour[(j-k)%city_num]=temp;
+      }
+      st=(i+1)%city_num;
+      printf("the length of the current tour is %f.\n",length);
+      goto RESTART;
+
+     }
+    }
+  }
+}

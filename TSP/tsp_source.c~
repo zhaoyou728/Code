@@ -1,0 +1,372 @@
+/* 分枝限定法プログラム */
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <time.h>
+
+
+
+#define S_POINT 1 // 開始都市数
+
+#define Kosuu 1 // 実行個数
+
+#define MAX 9999 // 最大値
+
+#define M_ARGC 1 // 引数
+
+#define randomize() srand(time(NULL)) // 乱数初期値設定
+
+#define getrandom(MAX, MIN) (rand() % (int)(MAX - MIN + 1) + MIN)
+
+// ↑指定範囲の乱数作成
+
+#define Max 50 // 乱数の最大値
+
+#define Min 5 // 乱数の最小値
+
+int Node; // 都市の数
+
+int *ex; // 行った都市の有無
+
+int **dis; // 距離行列
+
+int *r_p; // 現在の経路
+
+int *r_min; // 最短経路
+
+int d_p, d_min; // 現在の距離、最短距離
+
+int level; // 再帰の深さ
+
+int slide; // 開始都市をずらす
+
+int success; // 解の数（ダミー）
+
+unsigned long check; // 探索数
+
+FILE *fp; // ファイルポインタ
+
+int *array; // 乱数格納
+
+
+
+clock_t t1;
+
+clock_t t2;
+
+void bab_main(int); // BAB前処理
+
+void bab(int); // BAB処理
+
+void sum_dis(int); // 距離合計処理
+
+
+
+int arrayInit() {
+
+    int i;
+
+    ex = (int *)malloc(sizeof(int)*(Node+1));
+
+    r_p = (int *)malloc(sizeof(int)*(Node+1));
+
+    r_min = (int *)malloc(sizeof(int)*(Node+1));
+
+    dis = (int **)malloc(sizeof(int *)*(Node+1));
+
+    for (i = 0; i <= Node; i++)
+
+        dis[i] = (int *)malloc(sizeof(int)*(Node+1));
+
+    if (ex == NULL || r_p == NULL || r_min == NULL || dis == NULL) {
+
+        printf("Error memory can't allocate!\n");
+
+        exit(1);
+
+    }
+
+    return 0;
+
+}
+
+
+
+void arrayFree(){
+
+    free(ex);
+
+    free(r_p);
+
+    free(r_min);
+
+    free(dis);
+
+}
+
+
+
+void makeRandom(){
+
+    int i, count = 0;
+
+    int indata1, indata2, bufsize;
+
+    indata1 = Node;
+
+    indata2 = Kosuu;
+
+    bufsize = indata1*(indata1 -1) /2 * indata2;
+
+    // printf("bufsize=%d\n", bufsize);
+
+    array = (int *)malloc(sizeof(int)*(bufsize+1));
+
+    randomize();
+
+    for (i = 0; i < bufsize; i++)
+
+    array[i] = getrandom(Max,Min), ++count;
+
+}
+
+
+
+void makeMap(){
+
+    int i, j, h, m, k, w;
+
+    int count = 1;
+
+    for (h = 0; h < Kosuu; h++) {
+
+        k = 0, w = 1;
+
+        for (j = 1; j <= Node; j++) {
+
+            for (i = w; i <= Node; i++) {
+
+                if (j == i)
+
+                    dis[j][i] = 99;
+
+                else {
+
+                    dis[j][i] = array[k];
+
+                    dis[i][j] = array[k];
+
+                    k++;
+
+                }
+
+            }
+
+            w++;
+
+        }
+
+        for (j = 1; j <= Node; j++) {
+
+            for (i = 1; i <= Node; i++) {
+
+                printf("%2d ", dis[j][i]);
+
+            }
+
+            puts("");
+
+        }
+
+        puts("");
+
+    }
+
+    free(array);
+
+}
+
+
+
+int main(int argc, char *argv[]){
+
+    int i, j, k;
+
+    printf("都市数を入力してください（整数）:");
+
+    scanf("%d", &Node);
+
+    arrayInit();
+
+    makeRandom();
+
+    makeMap();
+
+    t1 = clock();
+
+    puts(" Min Tansaku Root");
+
+    bab_main(S_POINT);
+
+    printf("%5d ", d_min);
+
+    printf("%7ld ", check);
+
+    for (i = 0; i <= Node; i++) {
+
+        if (i == Node)
+
+            printf("%d", r_min[i]);
+        else
+
+            printf("%d-", r_min[i]);
+
+    }
+
+    puts("");
+
+    t2 = clock();
+
+    printf("time = %10.30f\n", (double)t2 - t1);
+
+    arrayFree();
+
+}
+
+
+
+void bab_main(int end) { 
+
+    int i;
+
+    /* fp = fopen("result.txt", "w");
+
+    if (fp == NULL) {
+
+        printf("ERROR file can't open!!\n");
+
+        exit(1);
+
+    } */
+
+    slide = 0;
+
+    d_min = MAX;
+
+    success = 0;
+
+    check = 0L;
+
+    for (i = 1; i <= Node; i++)
+
+        ex[i] = 1;
+
+    for (slide = 1; slide <= end; slide++) {
+
+        ex[slide]--;
+
+        bab(slide);
+
+        ex[slide]++;
+
+    }
+
+    // fclose(fp);
+
+}
+
+
+
+void bab(int i){
+
+    int j;
+
+    r_p[level] = i;
+
+    if (level == Node -1) {
+
+        r_p[level+1] = slide;
+
+        sum_dis(Node);
+
+        /* fprintf(fp, "Answer %d:", ++success);
+
+        for (i = 0; i <= Node; i++) {
+
+            if (i == Node)
+
+                fprintf(fp, "%d", r_p[i]);
+
+            else
+
+                fprintf(fp, "%d-", r_p[i]);
+
+        }
+
+        fprintf(fp, " Distance %d\n", d_p); */
+
+        if (d_p < d_min) {
+
+            d_min = d_p;
+
+            for (i = 0; i <= Node; i++)
+
+                r_min[i] = r_p[i];
+
+        }
+
+    } else {
+
+        for (j = 1; j <= Node; j++) {
+
+            if (ex[j] != 0) {
+
+                sum_dis(level);
+
+                /* fprintf(fp, "Answer %d:", ++success);
+
+                for (i = 0; i <= level; i++)
+
+                    fprintf(fp, "%d-", r_p[i]);
+
+                fprintf(fp, " dp=%d dmin=%d\n", d_p, d_min); */
+
+                if (d_p < d_min) {
+
+                    ex[j]--;
+
+                    level++;
+
+                    bab(j);
+
+                    ex[j]++;
+
+                    level--;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+
+
+void sum_dis(int loop_e) {
+
+    int i;
+
+    d_p = 0;
+
+    for (i = 0; i < loop_e; i++)
+
+        d_p += dis[r_p[i]][r_p[i+1]];
+
+    check++; // 探索数チェック
+
+}

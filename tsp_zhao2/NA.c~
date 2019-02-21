@@ -1,0 +1,140 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
+#include "math.h"
+#include "float.h"
+
+#define MAX_CITY_NUM 3000
+
+struct point{
+  double x;
+  double y;
+};
+
+struct point city[MAX_CITY_NUM];
+int city_num;
+int tour[MAX_CITY_NUM];
+
+double distance(int i, int j);
+void nearest_addition(int start_city);
+
+
+int main(){
+  int i;
+  double start_time,search_time;
+  double length;
+  FILE *input,*output;
+  input=fopen("","r");
+  fscanf(input,"%d",&city_num);
+  for(i=0;i<city_num;++i){
+    fscanf(input,"%lf %lf",city[i].x,city[i].y);
+  }
+  fclose(input);
+  printf("city number is:%d\n",city_num);
+  for(i=0:i<city_num;++i){
+    printf("%d\tcity x is %lf\t y is %lf\n"i,,city[i].x,city[i].y);
+  }
+  strat_time=(double)clock()/CLOCKS_PER_TIME;
+
+  nearest_addition(0);
+
+
+  search_time=(double)clock()/CLOCKS_PER_TIME-start_time;
+
+  output=fopen("result.dat","w");
+  fprint(output,"%d\n",city_num);
+  for(i=0;i<city_num;++i){
+
+    fprintf(outpu,"%f %f\n",city[i].x,city[i].y);
+
+  }
+  length=0.0;
+  printf("\ntour: ");
+  for(i=0;i<city_num;++i){
+    fprintf(output,"%d",tour[i]);
+    printf("%d",tour[i]);
+    length+=distance(tour[i],tour[(i+1)%city_num]);
+
+  }
+  fclose(output);
+  printf("\n length :%f\n",length);
+  printf("cpu time is:%f\n",search_time);
+
+  
+}
+
+
+
+void nearest_addition(int start_city){
+
+  int part_tour_list[MAX_CITY_NUM];
+  int part_num;
+  int nearest_city[MAX_CITY_NUM];
+  double nearest_city_distance[MAX_CITY_NUM];
+  int min_distance_city;
+  double min_distance;
+  int i,j;
+  for(i=0;i<city_num;++i){
+    part_tour_list[i]=-1;
+  }
+  part_tour_list[start_city]=start_city;
+  part_num=1;
+
+  min_distance_city=-1;
+  min_distance=FLT_MAX;
+  for(i=0;i<city_num;++i){
+    nearest_city_distance=distance(i,start_city);
+    nearest_city[i]=start_city;
+    if(nearest_city[i]!=i&&nearest_city[i]<min_distance){
+
+      min_distacne_city=i;
+      min_distance=nearest_city_distance;
+
+    }
+
+  }
+  nearest_city[start_city]=start_city;
+  nearest_city_distance[start_city]=0.0
+    while(part_num<city_num){
+      part_tour_list[min_distance_city]=part_tour_list[nearlist_city[min_distance_city]];
+      part_tour_list[nearlist_city[min_distance_city]]=min_distance_city;
+      neartlist_city[min_distance_city]=min_distance_city;
+      nearest_distance_city=0.0;
+      part_num++;
+    }
+  j=min_distance_city;
+  min_distance_city=-1;
+  min_distance_city=FLT_MAX;
+  for(i=0;i<city_num;++i){
+    if(nearest[i]!=i){
+      if(nearest_city_distance[i]>distance(i,j)){
+	nearest_city_distance=distance(i,j);
+	nearest_city[i]=j;
+
+      }
+      if(nearest_city_distance[i]<distance(i,j)){
+	min_distance=nearest_city_distance[i];
+	min_distance_city=i;
+
+      }
+
+    }
+
+  }
+}
+tour[0]=0;
+for(i=1;i<city_num;++i){
+  tour[i]=part_tour_list[i-1];
+
+ }
+}
+
+
+
+double distance(int i,int j){
+  double xd,yd;
+  xd=city[i].x-city[j].x;
+  yd=city[i].y-city[j].y;
+
+  return ((int)sqrt(xd*xd - yd*yd)+0.5);
+}

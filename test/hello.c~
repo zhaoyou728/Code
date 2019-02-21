@@ -1,0 +1,712 @@
+//#include"stdio.h"
+/*int main(){
+  int w[4]={1,2,3,4};
+  for(int i=0;i<4;++i){
+    printf("%3d\n",w[i]);
+
+  }
+  return 0;
+  }*/
+/*
+int main(){
+
+  int a[6]={3,4,65,6,54,36};
+  for(int i=0;i<6;++i){
+    for(int j=1;j<6-i;++j){
+      if(a[j]<a[j+1]){
+	int temp=a[j];
+	a[j]=a[j+1];
+	a[j+1]=temp;
+      }
+    }
+    printf(" %d ",a[i]);
+  }
+  printf("\n");
+  return 0;
+}
+*/
+/*
+int main(){
+  int a[2][3]={{12,3,1},{5,4,67}};
+  double linesum=0,linenumber=0,ave;
+  for(int i=0;i<2;i++){
+    linenumber=0;
+    for(int j=0;j<3;j++){
+
+      linesum+=a[i][j];
+      linenumber++;
+      ave=linesum/linenumber;
+      printf(" %d ",a[i][j]);
+    }
+    printf("%f ",ave);
+    printf("\n");
+  }
+  return 0;
+}
+*/
+/*
+#define M 1000
+int main(){
+  int row1,colu1,row2,colu2,a1[M][M],a2[M][M],a3[M][M];
+  printf("put in hanglie");
+  scanf("%d %d",&row1,&colu1);
+  for(int i=0;i<row1;++i){
+    for(int j=0;j<colu1;++j){
+      scanf("%d\n",&a1[i][j]);
+    }
+  }
+  printf("put in hanglie");
+  scanf("%d %d",&row2,&colu2);
+  for(int i=0;i<row2;++i){
+    for(int j=0;j<colu2;++j){
+      scanf("%d\n",&a2[i][j]);
+    }
+  }
+  for(int i=0;i<row1;++i){
+    for(int j=0;j<colu2;++j){
+      a3[i][j]=0;
+    }
+  }
+  if(row1!=colu2){
+    printf("error");
+  }
+  for(int i=0;i<row1;++i){
+    for(int j=0;j<colu2;++j){
+      for(int k=0;k<row2;++k){
+	a3[i][j]=a1[i][k]+a2[k][j];
+      }
+    }
+  }
+  for(int i=0;i<row1;++i){
+    for(int j=0;j<colu2;++j){
+      printf("%d",a3[i][j]);
+    }
+  }
+  return 0;
+}
+*/
+/*
+int main(){
+  int result;
+  for(int i=1;i<=9;++i){
+    for(int j=1;j<=i;++j){
+      result=j*i;
+      printf("%d*%d=%d ",i,j,result);
+    }
+    printf("\n");
+  }
+  return 0;
+  }*/
+/*
+void swap(int *a,int *b){
+  int temp=*a;
+  *a=*b;
+  *b=temp;
+  printf("%d %d \n",*a,*b);
+}
+int main(){
+  int x=10,y=20;
+  swap(&x,&y);
+  return 0;
+}
+*/
+/*
+#include"math.h"
+int main(){
+int i,j,k,h=0,leap=0;
+for(i=101;i<=200;++i){
+  k=sqrt(i);
+  for(j=2;j<=k;++j){
+    if(i%j==0){
+      leap=0;
+      break;
+    }
+  }
+    if(leap){
+      printf("%-4d",i);
+      h++;
+      if(h%10==0)
+	printf("\n");
+    }
+  leap=1;
+ }
+ printf("\n the total is:%d",h);
+ return 0;
+}
+*/
+/*
+int main(){
+  int i,j,n,s;
+  static int k[10];
+  for(i=2;i<1000;++i){
+    n=-1;
+    s=j;
+    for(j=1;j<i;++j){
+      if(i%j==0){
+	n++;
+	s=s-i;
+	k[n]=i;
+      }
+    }
+    if(s==0){
+      printf("%d",j);
+      for(i=0;i<n;++i){
+	printf("%d",k[i]);
+	printf("%d\n",k[n]);
+      }
+    }
+  }
+  return 0;
+  }*/
+/*
+#include"string.h"
+struct studentmakewith(int age,char* name,double mathscore,double chinesescore,double englishescore){
+  struct student result;
+
+  result.age=age;
+  strcpy(result.name,name);
+  result.mathscore=mathscore;
+  result.chinesescore=chinesescore;
+  result.englishscore=englishscore;
+
+  return result;
+
+
+}
+
+void showmessage(struct student stu){
+  printf("%d",stu.name);
+  printf("%d",stu.age);
+  printf("%f",stu.chinesescore);
+  printf("%f",stu.englishscore);
+  printf("%f",stu.mathscore);
+
+}
+int main(){
+  struct student newstudent(19,"huahua",60,30,20);
+  showmessage(newstudent);
+  return 0;
+
+}
+*/
+/*
+float fact(float j)
+{
+  float sum;
+  if(j==0)
+    sum=1;
+  else
+    sum=j*fact(j-1);
+  return sum;
+
+}
+
+int main(){
+  float i;
+  for(i=0;i<30;++i){
+    printf("%f=%f\n",i,fact(i));
+  }
+      return 0;
+}
+*/
+/*
+int main(){
+  float sum=0,a=2,b=1;
+  for(int i=1;i<-20;++i){
+    sum+=a/b;
+    int t=a;
+    a+=b;
+    b=t;
+  }
+  printf("%9.6f\n",sum);
+
+}
+*/
+/*
+
+#include"string.h"
+struct person  {
+  char name[40];
+  int height;
+  int weight;
+};
+
+void show(struct person ps){
+  printf("name=%s high=%d zhong=%d\n",ps.name,ps.height,ps.weight);
+
+}
+int main(){
+  struct person dt,dt2,dt3;
+  struct person *p=&dt2;
+  struct person *h=&dt3;
+  strcpy(dt.name,"zhaoyou");
+  dt.height=100;
+  dt.weight=180;
+  
+  strcpy(p->name,"bob");
+  p->height=100;
+  p->weight=50;
+
+  strcpy(p->name,"james");
+  p->height=39;
+  p->weight=35;
+  
+  show(dt3);
+  show(dt2);
+  show(dt);
+  return 0;
+}
+*/
+
+/*
+int main(){
+  int a[]={2,3,35,3,4,6};
+  int count =0;
+  while(a[count]){
+    printf("%d\n",count,*(a+count));
+    count++;
+  }
+  return 0;
+}
+*/
+/*
+int getMinMax(const int a[],int lenth,int *min,int *max){
+
+  int tempmin=a[0];
+  int tempmax=a[0];
+  for(int i=1;i<lenth;++i){
+    if(tempmin>a[i]){
+      tempmin=a[i];
+    }
+    if(tempmax<a[i]){
+      tempmax=a[i];
+    }
+  }
+  *min=tempmin;
+  *max=tempmax;
+  return 0;
+}
+int main(){
+  int num[]={23,4,2,42,3,5};
+  int minimize=0;
+  int maximize=0;
+  
+  getMinMax(num,sizeof(num)/sizeof(num[0]),&minimize,&maximize);
+  printf("min:%d  max:%d");
+  getchar();
+}
+*/
+/*
+int main(){
+  int temp=0;
+  for(register int i=0;i<=100;++i){ //register will be usually used to improve the project speed
+    temp+=i;
+
+  }
+  printf("sum is %d\n",temp);
+  return 0;
+}
+*/
+/*
+#define TRUE 1
+#define FALSE 0
+#define SQ(x) (x)*(x)
+int main(){
+  int num;
+  int again=1;
+  printf("if num minus 50 break \n");
+  while(again){
+    printf("\n put in number\n");
+    scanf("%d",&num);
+    printf("square is %d \n",SQ(num));
+    if(num>0)
+      again=TRUE;
+    else
+      again=FALSE;
+  }
+  return 0;
+}
+*/
+/*
+#include"test.h"
+
+int main(){
+
+  int i=23,j=23;
+  if(i LAG j)
+    printf("%d > %d \n",i,j);
+ else if(i SMA j)
+    printf("%d < %d \n",i,j);
+ else if(i EQ j)
+    printf("%d = %d \n",i,j);
+ else
+   printf("no value \n");
+  return 0;
+}
+*/
+/*
+#include"stdlib.h"
+#include"math.h"
+int Isprimer(unsigned int n);
+int main(){
+
+  unsigned int n,i;
+  do{
+    printf("put in a number \n");
+    scanf("%d",&n);
+  }while(n%2==0);
+  for(i=1;i<n;++i)
+    if(Isprimer(i)&&Isprimer(n-i))
+      break;
+  printf("%d %d %d\n",n,i,n-i);
+      return 0;
+}
+int Isprimer(unsigned int n){
+  int i;
+  if(n<4)return 1;
+  else if(n%2==0)return 0;
+  else
+    for(i=3;i<sqrt(n)+1;++i)
+      if(n%i==0)return 0;
+
+
+  return 1;
+}
+*/
+/*
+#include"stdlib.h"
+int length(char *s);
+int main(){
+  int len;
+  char str[20];
+  printf("put in it\n");
+  scanf("%s",str);
+  len=length(str);
+  printf("%d\n\n",len);
+  return 0;
+}
+int length(char *s){
+
+  int i=0;
+  while(*s!='\0'){
+    i++;
+    s++;
+  }
+  return i;
+}
+*/
+/*
+int main(){
+
+  int num[50],n,*p,j,loop,i,m,k;
+  printf("put in it \n");
+  scanf("%d",&n);
+  p=&num[0];
+  for(j=0;j<n;++j){
+    *(p+j)=j+1;
+  }
+  i=0;
+  m=0;
+  k=0;
+  while(m<n-1)
+    {
+      if(*(p+i)!=0){
+	k++;
+      }
+      if(k=3){
+	k=0;
+	*(p+i)=0;
+	m++;
+      }
+      i++;
+      if(i==n){
+	i=0;
+      }
+    }
+  printf("there have ?\n");
+  for(loop=0;loop<n;++loop){
+    if(num[loop]!=0){
+      printf("%2d\n",num[loop]);
+    }
+  }
+}
+*/
+//#include"windows.h"
+/*
+int fun1(int a,int b){
+  if(a>b){
+    return 1;
+  }
+  else{
+    return -1;
+  }
+} 
+
+void fun(int a,int b,int (*pfunc)(int a,int b)){
+  if(pfunc(a,b)>0){
+  printf("success\n");
+  }
+  else{
+    printf("fail\n");
+  }
+}
+int main(){
+  fun(20,3,fun1(20,3));
+  return 0;
+}
+*/
+/*
+int add_ret();
+
+int add(int a,int b,int (*add_value)()){
+
+  return add_value(a,b);
+}
+
+int main(void){
+
+  int sum=add(1,2,add_ret);
+  printf("%d\n",sum);
+  return 0;
+}
+
+int add_ret(int a,int b){
+
+  return 1*2;
+}
+*/
+/*
+int comparenumberfunction(int *array,int count,int comparenumber,int (*p)(int,int));
+int compareless(int num,int comparebum);
+int comparegreater(int num,int comparenum);
+	       
+int main(void){
+
+  int numberarray[5]={14,5,56,34,68};
+  int comparenumber =50;
+  comparenumberfunction(numberarray,5,comparenumber,comparegreater);
+  comparenumberfunction(numberarray,5,comparenumber,compareless);
+  return 0;
+}
+
+int comparenumberfunction(int *array,int count,int comparenumber,int (*p)(int,int)){
+  for(int i=1;i<=count;i++){
+    if(*(array+i)>comparenumber){
+      printf("%d\n",*(array+i));
+    }
+  }
+}
+
+int comparegreater(int num,int comparenum){
+
+  return num>comparenum;
+}
+
+int compareless(int num,int comparenum){
+  return num<comparenum;
+}
+*/
+/*
+typedef struct student{
+
+  char name[20];
+  float age;
+  float score;
+}Student;
+
+float comprebyage(Student stu1,Student stu2){
+  return stu1.age>stu2.age ? YES:NO;
+}
+
+ float comparebyscore(Student stu1,Student stu2){
+
+  return stu1.score>stu2.score ?yes:no;
+}
+
+void sortstudent(Student *array,int n,float (*p)(Student,Student)){
+
+
+  Student temp;
+  int flag=0;
+  for(int i=0;i<n-1 && flag==0;++i){
+    flag=1;
+    for(int j=0;j<n-i-1;++j){
+      if(p(array[j],array[j+1])){
+	temp=array[j];
+	array[j]=array[j+1];
+	array[j+1]=temp;
+	flag=0;
+
+      }
+    }
+  }
+}
+
+int main(){
+  Student stu1={"bob",19,98};
+Student stu2={"lina",12,95};
+Student stu3={"jammes",15,88};
+ stuarray[3]={stu1,stu2,stu3};
+ sortstudent(stuarray,3,comparebyscore);
+  sortstudent(stuarray,3,comparebyage);
+  return 0;
+  }*/
+
+/*
+#include"stdlib.h"
+#include"math.h"
+
+double f(double x){
+
+  return x*x*x*x+5*x*x;
+
+}
+/*
+double convergence(double a,double b,double eps,double *solution,int *N){
+  int k=0;
+  double s;
+  while(abs(a-b)>eps){
+    k++;
+    s=(a+b)/2.0;
+    if(f(s)*f(a)<0){
+      b=s;
+
+    }
+    else{
+      a=s;
+    }
+    if(k==20)
+      break;
+  }
+  *N=k;
+  *solution=s;
+  }*/
+
+/*
+double hasami(double a,double b,double eps){
+  double fl=f(a);
+  double fr=f(b);
+  double s;
+  double func;
+  while(abs(a-b)>eps){
+    s =a-f(a)*(b-a)/(f(b)-f(a));
+    func=f(s);
+    if(func==0){
+      break;
+    }
+    else if(fl*func<0){
+      b=s;
+      fr=func;
+    }
+    else{
+      a=s;
+      fl=func;
+    }
+  }
+  return 0.0;
+}
+int main(){
+
+  printf("%f",hasami(1.0,3.0,1.0e-7));
+  return 0;
+}
+*/
+/*
+#include"math.h"
+#define KMAX 30
+
+void eval(float x,float*,float*);
+
+int main(){
+  float x,eps,f,df,d;
+  int k;
+  printf("initial guess and tolerance:x eps ?");
+  scanf("%g%g",&x,&eps);
+
+  printf("\n k\tx\t\tf'(x)\t\tcorrection\n");
+  for(k=0;k<KMAX;k++){
+    eval(x,&f,&df);
+    d=-f/df;
+    printf("%2d %15.6e %15.6e %15.6e %15.6e\n",k,x,f,df,d);
+    x+=d;
+    if(fabs(f)<eps)break;
+  }
+  if(k>=KMAX)printf("not convergent?\n");
+  printf("\n root=%g\n",x);
+}
+
+void eval(float x,float *f,float *df){
+  float e;
+  e=exp(-x);
+  *f=e-sin(x)+cos(x);
+  *df=-e-cos(x)-sin(x);
+
+}
+*/
+/*
+#include"malloc.h"
+int main(void){
+  char *p=NULL;
+  p=(char*)malloc(sizeof(char)*100);
+  if(!p){
+
+    perror("malloc");
+    return -1;
+  }
+  sprintf(p,"%s","what are you doing now!!\n");
+  printf("%s\n",p);
+  free(p);
+  return 0;
+}
+*/
+#include "stdio.h"
+#include "stdlib.h"
+
+#define N 20
+
+double *double_vector(long i,long j);
+void free_dvector(double *a,long i);
+
+double inner_product(int m,int n, double *a,double *b);
+
+int main(){
+  double *a,*b;
+  int i;
+  a=double_vector(1,N);b=double_vector(1,N);
+  for(i=1;i<=N;++i){
+    a[i]=(double)i/20.0;
+    b[i]=(double)i/10.0;
+    }
+  printf("the inner product is %f\n",inner_product(1,N,a,b));
+  free_dvector(a,1);free_dvector(b,1);
+  return 0;
+
+
+}
+
+
+
+double *double_vector(long i,long j){
+
+  double *a;
+  if((a=(double*)malloc(((j-i+1)*sizeof(double))))==NULL){
+  printf("can not ensure the memory(form double_vector)\n");
+  exit(1);
+
+}
+return(a-i);
+}
+
+void free_dvector(double *a,long i){
+  free((void *)(a+i));
+
+}
+
+double inner_product(int m,int n,double *a,double *b){
+  int i;
+  double s=0.0;
+  for(i=m;i<n;++i){
+    s+=a[i]*b[i];
+    }
+  return s;
+}

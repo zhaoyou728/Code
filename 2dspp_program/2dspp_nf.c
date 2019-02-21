@@ -1,0 +1,115 @@
+/* 長方形ストリップパッキング問題に対するNF法 */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+#define FALSE 0
+#define TRUE 1
+#define MAX_N 1000  /* 長方形の最大数 */
+
+double strip_width, strip_height;  /* 母材の幅，高さ */
+int n;  /* 長方形の数 */
+double w[MAX_N], h[MAX_N];  /* 長方形iの幅w[i]と高さh[i]を格納する配列 */
+double x[MAX_N], y[MAX_N];  /* 長方形iの座標(x[i],y[i])を格納する配列 */
+
+/* NF法 */
+void next_fit(){
+
+  double level_width, level_height, max_h;
+  int i;
+
+  level_width = level_height = max_h = 0.0;
+  for(i = 0; i < n; i++){
+
+    /* 長方形iが現在のレベルに収まらなければ新たなレベルを生成する */
+    if(level_width + w[i] > strip_width){
+      x[i] = 0.0;
+      y[i] = level_height + max_h;
+      level_width = w[i];
+      level_height += max_h;
+      max_h = h[i];
+    }else{
+      x[i] = level_width;
+      y[i] = level_height;
+      level_width += w[i];
+
+      /* レベルを規定する高さの変更 */
+      if(h[i] > max_h){
+	max_h = h[i];
+      }
+    }
+  }
+}
+
+
+/* メインプログラム */
+int main(int argc, char *argv[]){
+
+  FILE *input_file, *output_file;
+  double start_time, search_time;
+  double area, efficiency;
+  int i;
+
+  /* 入力データの読込み */
+  input_file = fopen("N1.rec", "r");
+  fscanf(input_file, "w= %lf\n", &strip_width);
+  fscanf(input_file, "n= %d\n",&n);
+  for(i = 0; i < n; i++){
+    fscanf(input_file, "%lf %lf\n",&(w[i]),&(h[i]));
+  }
+  fclose(input_file);
+
+  /* 入力データを画面に表示 */
+  printf("w= %f\n",strip_width);
+  printf("n= %d\n",n);
+  for(i = 0; i < n; i++){
+    printf("%4d\t%f\t%f\n",i,w[i],h[i]);
+  }
+
+  /* 開始時刻の設定 */
+  start_time = (double)clock()/CLOCKS_PER_SEC;
+
+  /* NF法の実行 */
+  next_fit();
+
+  /* 実行時間の測定 */
+  search_time = (double)clock()/CLOCKS_PER_SEC - start_time;
+
+  /* 母材の高さを計算 */
+  strip_height = 0.0;
+  for(i = 0; i < n; i++){
+    if(y[i]+h[i] > strip_height){
+      strip_height = y[i]+h[i];
+    }
+  }
+
+  /* 充填率を計算 */
+  area = 0.0;
+  for(i = 0; i < n; i++){
+    area += w[i] * h[i];    
+  }
+  efficiency = area / (strip_width * strip_height) * 100.0;
+
+  /* 例題データおよび各長方形の配置座標をファイルに出力 */
+  output_file = fopen("result.dat","w");
+  fprintf(output_file,"w= %f\n",strip_width);
+  fprintf(output_file,"n= %d\n",n);
+  for(i = 0; i < n; i++){
+    fprintf(output_file,"%f\t%f\n",w[i],h[i]);
+  }
+  for(i = 0; i < n; i++){
+    fprintf(output_file,"%f\t%f\n",x[i],y[i]);
+  }
+  fclose(output_file);
+
+  /* 実行結果を画面に表示 */
+  printf("Coordinates of rectangles:\n");
+  for(i = 0; i < n; i++){
+    printf("%d\t%f\t%f\n",i,x[i],y[i]);
+  }
+  printf("\nh= %f\n",strip_height);
+  printf("time= %f\n",search_time);
+
+  return(0);
+}

@@ -1,0 +1,299 @@
+
+Gurobi 5.6.0 (win64) logging started 04/23/14 15:26:53
+
+Optimize a model with 10201 rows, 10101 columns and 40100 nonzeros
+Presolve time: 0.66s
+Presolved: 10201 rows, 10101 columns, 40100 nonzeros
+Variable types: 1 continuous, 10100 integer (10100 binary)
+Found heuristic solution: objective 0.9392708
+Found heuristic solution: objective 0.9388764
+Found heuristic solution: objective 0.9335182
+
+Root relaxation: objective 1.303766e-01, 3933 iterations, 2.50 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.13038    0  839    0.93352    0.13038  86.0%     -    3s
+H    0     0                       0.8869213    0.13038  85.3%     -    4s
+     0     0    0.13300    0  874    0.88692    0.13300  85.0%     -    7s
+H    0     0                       0.6181899    0.13300  78.5%     -    7s
+     0     0    0.13300    0  843    0.61819    0.13300  78.5%     -   11s
+H    0     0                       0.2934553    0.13300  54.7%     -   11s
+     0     0    0.13300    0  855    0.29346    0.13300  54.7%     -   16s
+     0     0    0.13300    0  838    0.29346    0.13300  54.7%     -   17s
+H    0     0                       0.2572651    0.13300  48.3%     -   17s
+     0     0    0.13360    0  883    0.25727    0.13360  48.1%     -   19s
+H    0     0                       0.2463099    0.13360  45.8%     -   19s
+     0     0    0.13701    0  716    0.24631    0.13701  44.4%     -   20s
+     0     0    0.13701    0  728    0.24631    0.13701  44.4%     -   21s
+H    0     0                       0.2462569    0.13701  44.4%     -   21s
+     0     0    0.13701    0  822    0.24626    0.13701  44.4%     -   22s
+     0     0    0.13920    0  718    0.24626    0.13920  43.5%     -   23s
+     0     0    0.13952    0  747    0.24626    0.13952  43.3%     -   23s
+     0     0    0.13966    0  755    0.24626    0.13966  43.3%     -   23s
+     0     0    0.13967    0  763    0.24626    0.13967  43.3%     -   24s
+     0     0    0.13967    0  719    0.24626    0.13967  43.3%     -   24s
+     0     2    0.13967    0  719    0.24626    0.13967  43.3%     -   26s
+H   35    38                       0.2357453    0.14375  39.0%   260   28s
+*   54    50               9       0.2294033    0.14375  37.3%   304   29s
+    61    59    0.17327   13  380    0.22940    0.14375  37.3%   281   30s
+H   67    61                       0.2274093    0.14375  36.8%   273   30s
+H   67    61                       0.2215458    0.14375  35.1%   273   30s
+H   68    63                       0.2206177    0.14375  34.8%   273   30s
+*   71    53              14       0.2187034    0.14375  34.3%   277   30s
+
+Cutting planes:
+  Gomory: 6
+  MIR: 8
+
+Explored 129 nodes (55247 simplex iterations) in 32.42 seconds
+Thread count was 4 (of 4 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.187034280810e-01, best bound 2.187034280810e-01, gap 0.0%
+
+Gurobi 5.5.0 (win64) logging started 10/05/14 05:04:51
+
+
+Gurobi 8.1.0 (win64, Python) logging started 11/14/18 11:34:46
+
+Academic license - for non-commercial use only
+Optimize a model with 14 rows, 23 columns and 28 nonzeros
+Model has 7 quadratic constraints
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 8e+01]
+Presolve removed 2 rows and 2 columns
+Presolve time: 0.00s
+Presolved: 12 rows, 21 columns, 24 nonzeros
+Presolved model has 7 second-order cone constraints
+Ordering time: 0.00s
+
+Barrier statistics:
+ Dense cols : 1
+ AA' NZ     : 4.800e+01
+ Factor NZ  : 9.100e+01
+ Factor Ops : 8.190e+02 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.12303274e+03  0.00000000e+00  1.42e-14 1.16e+00  1.05e+02     0s
+   1   8.95508717e+02  6.16991647e+02  2.13e-14 1.28e-06  1.33e+01     0s
+   2   8.52355326e+02  8.40568408e+02  2.84e-14 1.62e-08  5.61e-01     0s
+   3   8.44024357e+02  8.43976412e+02  7.23e-12 3.52e-11  2.28e-03     0s
+   4   8.43988119e+02  8.43986994e+02  2.78e-10 4.45e-10  5.36e-05     0s
+   5   8.43987153e+02  8.43987119e+02  6.47e-09 6.26e-09  1.61e-06     0s
+   6   8.43987143e+02  8.43987142e+02  9.78e-10 4.08e-10  6.09e-08     0s
+
+Barrier solved model in 6 iterations and 0.01 seconds
+Optimal objective 8.43987143e+02
+
+Optimize a model with 28 rows, 37 columns and 56 nonzeros
+Model has 7 quadratic constraints
+Variable types: 30 continuous, 7 integer (7 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+03]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 5e+03]
+Presolve removed 16 rows and 16 columns
+Presolve time: 0.01s
+Presolved: 33 rows, 42 columns, 66 nonzeros
+Variable types: 42 continuous, 0 integer (0 binary)
+Presolve removed 21 rows and 21 columns
+Presolve time: 0.05s
+Presolved: 12 rows, 21 columns, 24 nonzeros
+Presolved model has 7 second-order cone constraints
+Root barrier log...
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ Dense cols : 1
+ AA' NZ     : 4.800e+01
+ Factor NZ  : 9.100e+01
+ Factor Ops : 8.190e+02 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.12303171e+03  0.00000000e+00  1.42e-14 2.91e-01  2.63e+01     0s
+   1   8.95514581e+02  6.16990630e+02  2.84e-14 3.20e-07  3.32e+00     0s
+   2   8.52356192e+02  8.40568215e+02  3.91e-14 4.05e-09  1.40e-01     0s
+   3   8.44024366e+02  8.43976410e+02  2.19e-12 8.81e-12  5.71e-04     0s
+   4   8.43988119e+02  8.43986994e+02  6.73e-10 5.96e-11  1.34e-05     0s
+   5   8.43987153e+02  8.43987119e+02  2.73e-08 1.93e-09  4.03e-07     0s
+
+Barrier solved model in 5 iterations and 0.06 seconds
+Optimal objective 8.43987153e+02
+
+
+Root relaxation: objective 8.439872e+02, 0 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     843.9871530  843.98715  0.00%     -    0s
+
+Explored 0 nodes (0 simplex iterations) in 0.06 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 1: 843.987 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.439871530353e+02, best bound 8.439871530353e+02, gap 0.0000%
+
+Gurobi 8.1.0 (win64, Python) logging started 11/14/18 11:36:26
+
+Academic license - for non-commercial use only
+Optimize a model with 14 rows, 23 columns and 28 nonzeros
+Model has 7 quadratic constraints
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 8e+01]
+Presolve removed 2 rows and 2 columns
+Presolve time: 0.00s
+Presolved: 12 rows, 21 columns, 24 nonzeros
+Presolved model has 7 second-order cone constraints
+Ordering time: 0.00s
+
+Barrier statistics:
+ Dense cols : 1
+ AA' NZ     : 4.800e+01
+ Factor NZ  : 9.100e+01
+ Factor Ops : 8.190e+02 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.12303274e+03  0.00000000e+00  1.42e-14 1.16e+00  1.05e+02     0s
+   1   8.95508717e+02  6.16991647e+02  2.13e-14 1.28e-06  1.33e+01     0s
+   2   8.52355326e+02  8.40568408e+02  2.84e-14 1.62e-08  5.61e-01     0s
+   3   8.44024357e+02  8.43976412e+02  7.23e-12 3.52e-11  2.28e-03     0s
+   4   8.43988119e+02  8.43986994e+02  2.78e-10 4.45e-10  5.36e-05     0s
+   5   8.43987153e+02  8.43987119e+02  6.47e-09 6.26e-09  1.61e-06     0s
+   6   8.43987143e+02  8.43987142e+02  9.78e-10 4.08e-10  6.09e-08     0s
+
+Barrier solved model in 6 iterations and 0.01 seconds
+Optimal objective 8.43987143e+02
+
+Optimize a model with 28 rows, 37 columns and 56 nonzeros
+Model has 7 quadratic constraints
+Variable types: 30 continuous, 7 integer (7 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+03]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 5e+03]
+Presolve removed 16 rows and 16 columns
+Presolve time: 0.00s
+Presolved: 33 rows, 42 columns, 66 nonzeros
+Variable types: 42 continuous, 0 integer (0 binary)
+Presolve removed 21 rows and 21 columns
+Presolve time: 0.03s
+Presolved: 12 rows, 21 columns, 24 nonzeros
+Presolved model has 7 second-order cone constraints
+Root barrier log...
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ Dense cols : 1
+ AA' NZ     : 4.800e+01
+ Factor NZ  : 9.100e+01
+ Factor Ops : 8.190e+02 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.12303171e+03  0.00000000e+00  1.42e-14 2.91e-01  2.63e+01     0s
+   1   8.95514581e+02  6.16990630e+02  2.84e-14 3.20e-07  3.32e+00     0s
+   2   8.52356192e+02  8.40568215e+02  3.91e-14 4.05e-09  1.40e-01     0s
+   3   8.44024366e+02  8.43976410e+02  2.19e-12 8.81e-12  5.71e-04     0s
+   4   8.43988119e+02  8.43986994e+02  6.73e-10 5.96e-11  1.34e-05     0s
+   5   8.43987153e+02  8.43987119e+02  2.73e-08 1.93e-09  4.03e-07     0s
+
+Barrier solved model in 5 iterations and 0.03 seconds
+Optimal objective 8.43987153e+02
+
+
+Root relaxation: objective 8.439872e+02, 0 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     843.9871530  843.98715  0.00%     -    0s
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 1: 843.987 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.439871530353e+02, best bound 8.439871530353e+02, gap 0.0000%
+
+Gurobi 8.1.0 (win64, Python) logging started 11/14/18 11:39:26
+
+Academic license - for non-commercial use only
+Changed value of parameter DualReductions to 0
+   Prev: 1  Min: 0  Max: 1  Default: 1
+Changed value of parameter LazyConstraints to 1
+   Prev: 0  Min: 0  Max: 1  Default: 0
+Optimize a model with 19 rows, 171 columns and 342 nonzeros
+Variable types: 0 continuous, 171 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e-02, 1e+00]
+  Bounds range     [1e+00, 2e+00]
+  RHS range        [2e+00, 6e+00]
+Presolve time: 0.00s
+Presolved: 19 rows, 171 columns, 342 nonzeros
+Variable types: 0 continuous, 171 integer (153 binary)
+
+Root relaxation: objective 4.376638e+00, 26 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    4.39003    0    8          -    4.39003      -     -    0s
+     0     0    4.67996    0    6          -    4.67996      -     -    0s
+     0     0    5.52294    0   12          -    5.52294      -     -    0s
+     0     0    5.52294    0   12          -    5.52294      -     -    0s
+     0     2    5.52294    0   12          -    5.52294      -     -    0s
+* 1012   542              21       6.8438644    6.01914  12.1%   6.2    0s
+* 1045   532              32       6.8317507    6.03163  11.7%   6.2    0s
+H 1073   483                       6.5313691    6.03163  7.65%   6.2    0s
+* 1159   465              31       6.4394838    6.05886  5.91%   6.2    0s
+* 1272   458              16       6.4063384    6.07107  5.23%   6.4    0s
+* 1273   399              15       6.3664364    6.07107  4.64%   6.4    0s
+H 1368   314                       6.3122489    6.07534  3.75%   6.4    0s
+* 1538   302              29       6.2887726    6.12202  2.65%   6.5    0s
+* 1570   122              14       6.2116731    6.12334  1.42%   6.6    0s
+* 1650    89               8       6.2081071    6.15143  0.91%   6.6    0s
+* 1674    37              15       6.2008614    6.15368  0.76%   6.6    0s
+
+Cutting planes:
+  MIR: 3
+  Lazy constraints: 531
+
+Explored 1755 nodes (11802 simplex iterations) in 0.66 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 10: 6.20086 6.20811 6.21167 ... 6.83175
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.200861356576e+00, best bound 6.200861356576e+00, gap 0.0000%
+
+Gurobi 8.1.0 (win64, Python) logging started 11/15/18 17:32:08
+
+Academic license - for non-commercial use only
